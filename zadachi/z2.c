@@ -5,15 +5,9 @@
 // longest possible Length of an input a
 #define maxLength 256
 
-int main (int argc, char *argv[])
-{
-	char a[maxLength];
-	int i = 0, LengthA = 0, iCurChar = 0, result = 0, b[maxLength];
-
-	// reading a number
-	printf ("Input number: ");
-	fgets(a, sizeof(a), stdin);
-
+int calc_result(char a[maxLength]){
+	int LengthA = 0, result = 0, b[maxLength], i, iCurChar;
+	
 	// counting number's size
 	LengthA = strlen(a) - 1;
 
@@ -28,7 +22,21 @@ int main (int argc, char *argv[])
 	// computing result
 	for (i = 0; i < LengthA; i++)
 		result += b[i] * pow(2, i);
+		
+	return result;
+}
 
-  printf("Result: %d", result);
+int main (int argc, char *argv[])
+{
+	char a[maxLength];
+	int result;
+
+	// reading a number
+	printf ("Input number: ");
+	fgets(a, sizeof(a), stdin);
+
+	result = calc_result(a);
+
+  	printf("Result: %d", result);
 	return 0;
 }
